@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./styles/LoginForm.css";
+import qs from 'qs'
 
 const initialForm = Object.freeze({
   username:"",
@@ -9,24 +10,28 @@ const initialForm = Object.freeze({
 
 const LoginForm = () => {
   const [formData, updateFormData] = useState(initialForm);
+  //console.log(formData);
+
   const [login, loginForm] = useState();
   const [loginMessage, setLoginMessage] = useState();
 
-  /*const handleChange = (e) => {
+  const handleChange = (e) => {
+
     updateFormData({
+      ...formData, 
       [e.target.name]: e.target.value.trim()
     });
-  }; */
+  };
 
   const submitResponse = (e) => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:8080/auth/login", formData, {
+      .post("http://localhost:8080/auth/login", qs.stringify(formData), {
         headers: {
-          "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/x-www-form-urlencoded",
         },
+        formData: qs.stringify(formData),
       })
       .then((resp) => {
         if (resp.status === 200) {
@@ -48,11 +53,11 @@ const LoginForm = () => {
       <form>
         Username: 
         <input
-          type="username" required //onChange={handleChange}
+          type="username" name="username" required onChange={handleChange}
         ></input> <br/><br/>
         Password:
         <input
-          type="password" required //onChange={handleChange}
+          type="password" name="password" required onChange={handleChange}
         ></input>
         <br /> <br />
         <button onClick={submitResponse}>
