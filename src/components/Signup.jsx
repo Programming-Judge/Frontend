@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import LoginForm from "./LoginForm.jsx"
-const Login = () => {
+import SignupForm from "./SignupForm.jsx"
+const Signup = () => {
 
   return (
     <div>
       <center>
-        <h1>Login</h1>
+        <h1>Sign Up</h1>
       </center>
       
-      <LoginForm />
+      <SignupForm />
     </div>
   );
 };
 
-export default Login;
+export default Signup;
