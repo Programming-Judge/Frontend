@@ -1,26 +1,22 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const ProblemSet = () => {
-  const [problems, setProblems] = useState([]);
-
+  
+  const [problems, setProblems] = useState([])
+  
   useEffect(() => {
-    // Get the problems using axios ie. using axios.get()
-    // and delete setProblems
 
-    setProblems([
-      {
-        id: 1,
-        title: "Problem 1",
-        difficulty: "Easy",
-      },
-      {
-        id: 2,
-        title: "Problem 2",
-        difficulty: "Medium",
-      },
-    ]);
-  }, []);
+    axios.get("http://localhost:8080/problem/view")
+      .then(
+        res =>  {
+          const questions = res.data
+          // console.log(questions)
+          setProblems(questions.data)
+        }
+      )
+  }, [])
 
   return (
     <div>
@@ -32,20 +28,20 @@ const ProblemSet = () => {
           <tr>
             <th scope="col">#</th>
             <th scope="col">Title</th>
-            <th scope="col">Difficulty</th>
+            <th scope="col">Description</th>
           </tr>
         </thead>
         <tbody>
           {problems.map((problem) => {
             return (
-              <tr key={problem.id}>
-                <th>{problem.id}</th>
+              <tr key={problem.ID}>
+                <th>{problem.ID}</th>
                 <td>
-                  <Link key={problem.id} to={`/problem/${problem.id}`}>
-                    {problem.title}
+                  <Link key={problem.ID} to={`/problem/${problem.ID}`}>
+                    {problem.Title}
                   </Link>
                 </td>
-                <td>{problem.difficulty}</td>
+                <td>{problem.Description}</td>
               </tr>
             );
           })}
