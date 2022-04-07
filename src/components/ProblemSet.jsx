@@ -36,16 +36,16 @@ const ProblemSet = () => {
       <table className="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
+            <th scope="col">ID</th>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
           </tr>
         </thead>
         <tbody>
-          {problems.map((problem) => {
+          {problems.map((problem, index) => {
             return (
               <tr key={problem.ID}>
-                <th>{problem.ID}</th>
+                <th>{index + 1}</th>
                 <td>
                   <Link key={problem.ID} to={`/problem/${problem.ID}`}>
                     {problem.Title}
