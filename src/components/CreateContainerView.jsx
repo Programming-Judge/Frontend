@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import CreateView from "./CreateView";
+import { Navigate } from "react-router";
 
 class CreateContainerView extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class CreateContainerView extends Component {
       description: "",
       timelimit: 1,
       memorylimit: 256,
+      redirectToProblemset: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -50,7 +52,9 @@ class CreateContainerView extends Component {
         memorylimit: memorylimit,
       })
       .then((res) => {
-        console.log(res);
+        this.setState({
+          redirectToProblemset: true,
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -58,7 +62,11 @@ class CreateContainerView extends Component {
   }
 
   render() {
-    const { title, description, timelimit, memorylimit } = this.state;
+    const { title, description, timelimit, memorylimit, redirectToProblemset } =
+      this.state;
+    if (redirectToProblemset) {
+      return <Navigate to="/problemset" />;
+    }
 
     return (
       <CreateView
