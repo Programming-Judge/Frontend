@@ -6,6 +6,7 @@ import Problem from "./components/Problem";
 import ProblemSet from "./components/ProblemSet";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import CreateContainerView from "./components/CreateContainerView";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/problem/:id" element={<Problem />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/create" element={<CreateContainerView />} />
       </Routes>
       <Footer />
     </Router>
