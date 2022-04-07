@@ -3,26 +3,23 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const ProblemSet = () => {
-  
-  const [problems, setProblems] = useState([])
-  
-  useEffect(() => {
+  const [problems, setProblems] = useState([]);
 
-    axios.get("http://localhost:8080/problem/view")
-      .then(
-        res =>  {
-          const questions = res.data
-          // console.log(questions)
-          setProblems(questions.data)
-        }
-      )
-  }, [])
+  useEffect(() => {
+    axios.get("http://localhost:8080/problem/view").then((res) => {
+      const questions = res.data;
+      setProblems(questions.data);
+    });
+  }, []);
 
   return (
     <div>
       <center>
         <h1>Problem Set</h1>
       </center>
+      <Link className="btn btn-dark my-2 my-sm-0 text-light" to="/create">
+        Create Problem
+      </Link>
       <table className="table">
         <thead>
           <tr>
