@@ -11,7 +11,6 @@ const Problem = () => {
   useEffect(() => {
     axios.get(`http://localhost:8080/problem/view/${problemId}`).then((res) => {
       const question = res.data;
-      console.log(question.data);
       setProblem(question.data);
     });
   }, []);
@@ -22,7 +21,7 @@ const Problem = () => {
       <h6>Statement: {problem.Description}</h6>
       <h6>Time limit: {problem.TimeLimit} seconds</h6>
       <h6>Memory limit: {problem.MemoryLimit} MB</h6>
-      <FileUpload />
+      <FileUpload id={problemId} />
     </div>
   );
 };
