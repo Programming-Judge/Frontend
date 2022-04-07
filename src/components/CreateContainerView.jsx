@@ -51,14 +51,19 @@ class CreateContainerView extends Component {
     const { title, description, timelimit, memorylimit, input, output } =
       this.state;
 
+    const formData = new FormData();
+    formData.append("title", title)
+    formData.append("description", description)
+    formData.append("timelimit", timelimit)
+    formData.append("memorylimit", memorylimit)
+    formData.append("input", input)
+    formData.append("output", output)
+
     axios
-      .post("/problem/create", {
-        title: title,
-        description: description,
-        timelimit: timelimit,
-        memorylimit: memorylimit,
-        input: input,
-        output: output,
+      .post("/problem/create", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       })
       .then((res) => {
         this.setState({
