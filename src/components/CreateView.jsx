@@ -58,6 +58,14 @@ class CreateView extends Component {
           ></input>
           <br />
           <br />
+          Input Files:
+          <input type="file" name="input" required onChange={onChange}></input>
+          <br />
+          <br />
+          Output Files:
+          <input type="file" name="output" required onChange={onChange}></input>
+          <br />
+          <br />
           <center>
             <Button
               className="btn btn-dark"

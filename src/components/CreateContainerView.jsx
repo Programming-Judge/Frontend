@@ -12,6 +12,8 @@ class CreateContainerView extends Component {
       timelimit: 1,
       memorylimit: 256,
       redirectToProblemset: false,
+      input: null,
+      output: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -20,7 +22,8 @@ class CreateContainerView extends Component {
   }
 
   handleChange(event) {
-    const value = event.target.value;
+    const value =
+      event.target.type === "file" ? event.target.files[0] : event.target.value;
     const name = event.target.name;
 
     this.setState({
@@ -29,20 +32,24 @@ class CreateContainerView extends Component {
   }
 
   validateForm() {
-    const { title, description, timelimit, memorylimit } = this.state;
+    const { title, description, timelimit, memorylimit, input, output } =
+      this.state;
 
     return (
       title.length > 0 &&
       description.length > 0 &&
       timelimit > 0 &&
-      memorylimit > 0
+      memorylimit > 0 &&
+      input !== null &&
+      output !== null
     );
   }
 
   handleSubmit(event) {
     event.preventDefault();
 
-    const { title, description, timelimit, memorylimit } = this.state;
+    const { title, description, timelimit, memorylimit, input, output } =
+      this.state;
 
     axios
       .post("/problem/create", {
@@ -50,6 +57,8 @@ class CreateContainerView extends Component {
         description: description,
         timelimit: timelimit,
         memorylimit: memorylimit,
+        input: input,
+        output: output,
       })
       .then((res) => {
         this.setState({
