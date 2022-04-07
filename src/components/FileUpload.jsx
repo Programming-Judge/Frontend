@@ -13,7 +13,7 @@ const FileUpload = () => {
     formData.append("code_file", codeFile);
 
     axios
-      .post("http://localhost:8080/submit/eval", formData, {
+      .post("http://localhost:8080/problem/submit", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
