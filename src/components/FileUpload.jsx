@@ -2,15 +2,18 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./styles/FileUpload.css";
 
-const FileUpload = () => {
+const FileUpload = (props) => {
   const [codeFile, setCodeFile] = useState();
   const [codeFileUploadMessage, setCodeFileUploadMessage] = useState();
 
   const submitFiles = (e) => {
     e.preventDefault();
 
+    // You can access problem id as props.id
+
     const formData = new FormData();
     formData.append("code_file", codeFile);
+    formData.append("id", props.id);
 
     axios
       .post("http://localhost:8080/problem/submit", formData, {
