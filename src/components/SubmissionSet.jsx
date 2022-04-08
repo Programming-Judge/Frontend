@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const SubmissionSet = () => {
   const [submissions, setSubmissions] = useState([]);
@@ -36,6 +37,7 @@ const SubmissionSet = () => {
             <th scope="col">Question Name</th>
             <th scope="col">Language</th>
             <th scope="col">Status</th>
+            <th scope="col">File</th>
           </tr>
         </thead>
         <tbody>
@@ -46,7 +48,12 @@ const SubmissionSet = () => {
                 <td>{submission.UserName}</td>
                 <td>{submission.QuestionName}</td>
                 <td>{submission.Language}</td>
-                <td>{submission.Status}</td>    
+                <td>{submission.Status}</td>
+                <td>
+                <Link key={submission.ID} to={`/file/${submission.FileName}`}>
+                    File
+                </Link>
+                </td>    
               </tr>
             );
           })}

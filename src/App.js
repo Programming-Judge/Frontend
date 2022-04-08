@@ -8,6 +8,7 @@ import SubmissionSet from "./components/SubmissionSet";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import CreateContainerView from "./components/CreateContainerView";
+import FileView from "./components/FileView";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route exact path="/problemset" element={<ProblemSet />} />
         <Route exact path="/submissionset" element={<SubmissionSet />} />
         <Route exact path="/problem/:id" element={<Problem />} />
+        <Route exact path="/file/:filename" element={<FileView />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/create" element={<CreateContainerView />} />
