@@ -13,6 +13,9 @@ const Navigation = () => {
         <Link className="btn btn-light my-2 my-sm-0 text-dark" to="/problemset">
           Problems
         </Link>
+        <Link className="btn btn-light my-2 my-sm-0 text-dark" to="/submissionset">
+          Submissions
+        </Link>
         <Link className="btn btn-light my-2 my-sm-0 text-dark" to="/login">
           Login
         </Link>
