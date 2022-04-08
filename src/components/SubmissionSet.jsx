@@ -39,7 +39,7 @@ const SubmissionSet = () => {
           </tr>
         </thead>
         <tbody>
-          {submissions.map((submission, index) => {
+          {submissions && submissions.map((submission, index) => {
             return (
               <tr key={submission.ID}>
                 <th>{index + 1}</th>

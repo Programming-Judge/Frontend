@@ -42,7 +42,7 @@ const ProblemSet = () => {
           </tr>
         </thead>
         <tbody>
-          {problems.map((problem, index) => {
+          {problems && problems.map((problem, index) => {
             return (
               <tr key={problem.ID}>
                 <th>{index + 1}</th>
